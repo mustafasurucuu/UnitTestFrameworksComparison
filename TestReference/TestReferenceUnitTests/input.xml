@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Rows>
+  <Row>
+    <speed>0</speed>
+    <expectedResult>0</expectedResult>
+  </Row>
+  <Row>
+    <speed>64</speed>
+    <expectedResult>0</expectedResult>
+  </Row>
+  <Row>
+    <speed>65</speed>
+    <expectedResult>0</expectedResult>
+  </Row>
+  <Row>
+    <speed>70</speed>
+    <expectedResult>1</expectedResult>
+  </Row>
+  <Row>
+    <speed>75</speed>
+    <expectedResult>2</expectedResult>
+  </Row>
+</Rows>
