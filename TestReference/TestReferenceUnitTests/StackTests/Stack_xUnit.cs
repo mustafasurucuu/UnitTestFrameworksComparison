@@ -10,13 +10,13 @@ namespace StackTests
         public Stack<string> stack;
         public StackFixture()
         {
-            //Here is ClassInitialize
-            stack = new Stack<string>(); 
+            //Here is TestInitialize
+            //stack = new Stack<string>();
         }
 
         public void Dispose()
         {
-            //stack.Clear(); //Here is ClassCleanup
+            stack.Clear(); //Here is TestCleanup
         }
     }
     public class Stack_xUnit : IClassFixture<StackFixture>, IDisposable
@@ -26,12 +26,13 @@ namespace StackTests
 
         public Stack_xUnit(StackFixture fixture)
         {
-            this.fixture = fixture; //Here is TestInitialize
+            this.fixture = fixture; //Here is ClassInitialize
+            fixture.stack = new Stack<string>();
         }
 
         public void Dispose()
         {
-            fixture.stack.Clear(); //Here is TestCleanup
+            //fixture.stack.Clear(); //Here is ClassCleanup
         }
 
         [Fact]

@@ -1,5 +1,7 @@
 ﻿using NUnit.Framework;
 using System;
+using System.Collections.Generic;
+using System.IO;
 using TestReference.Fundamentals;
 
 namespace DemeritPointsTests
@@ -36,4 +38,28 @@ namespace DemeritPointsTests
             Assert.That(points, Is.EqualTo(expectedResult));
         }
     }
+
+    [TestFixture]
+    public class DemeritPoints_NUnit_FromIEnum
+    {
+        [Test, TestCaseSource("GetDataFromIEnum")]
+        public void WhenCalled_ReturnDemeritPoints(int speed, int expectedResult)
+        {
+            var calculator = new DemeritPointsCalculator();
+
+            var points = calculator.CalculateDemeritPoints(speed);
+
+            Assert.That(points, Is.EqualTo(expectedResult));
+        }
+
+        private static IEnumerable<TestCaseData> GetDataFromIEnum()
+        {
+            yield return new TestCaseData(0, 0);
+            yield return new TestCaseData(64, 0);
+            yield return new TestCaseData(65, 0);
+            yield return new TestCaseData(70, 1);
+            yield return new TestCaseData(75, 2);
+        }
+    }   
+ 
 }

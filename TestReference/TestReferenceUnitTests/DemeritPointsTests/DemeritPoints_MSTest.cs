@@ -31,5 +31,30 @@ namespace DemeritPointsTests
 
             Assert.AreEqual(expectedResult, points);
         }
-    }   
+    }
+
+    [TestClass]
+    public class DemeritPoints_MSTest_FromCsv
+    {
+        private TestContext testContext;
+        public TestContext TestContext
+        {
+            get { return testContext; }
+            set { testContext = value; }
+        }
+    
+        [TestMethod]
+        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV",
+        @"C:\Users\Dell\Desktop\UnitTestFrameworksComparison\TestReference\TestReference\data\data.csv", "data#csv", DataAccessMethod.Sequential)]
+        public void WhenCalled_ReturnDemeritPoints()
+        {
+            var calculator = new DemeritPointsCalculator();
+
+            var points = calculator.CalculateDemeritPoints((int)TestContext.DataRow["speed"]);
+
+            var expectedResult = (int)TestContext.DataRow["expectedResult"];
+
+            Assert.AreEqual(expectedResult, points);
+        }
+    }
 }

@@ -5,10 +5,12 @@ using TestReference.Fundamentals;
 namespace ParallelTest_NUnit
 {
     [TestFixture]
-    [Parallelizable(ParallelScope.All)]
+    //[Parallelizable(ParallelScope.All)]
+    [Parallelizable]
     public class Performance_NUnit_X
     {
         [Test]
+        [Parallelizable]
         [TestCase(-1)]
         [TestCase(301)]
         public void METHOD_A(int speed)
@@ -20,6 +22,7 @@ namespace ParallelTest_NUnit
         }
 
         [Test]
+        [Parallelizable]
         [TestCase(0, 0)]
         [TestCase(64, 0)]
         [TestCase(65, 0)]

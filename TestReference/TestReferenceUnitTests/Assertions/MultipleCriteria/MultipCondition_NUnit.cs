@@ -24,8 +24,8 @@ namespace Assertions.MultipleCriteria
 
             Assert.Multiple(() =>
             {
-                Assert.That(aNumber, Is.AssignableTo<double>());
                 Assert.That(aNumber, Is.InRange(0.0, 10.0));
+                Assert.That(aNumber, Is.AssignableTo<double>());
             }
             );
         }
